@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Card from '../components/Card.astro'
+import Headshot from '../components/Headshot.astro'
+import Number from '../components/Number.astro'
+import Name from '../components/Name.astro'
+import Location from '../components/Location.astro'
+import Social from '../components/Social.astro'
+import About from '../components/About.astro'
+import Hero from '../components/Hero.astro'
+import Navbar from '../components/Navbar.astro'
+import Porfolio from '../components/Porfolio.astro'
+---
+
+<Layout title="Joseph Risk Personal Site">
+	<div class="flex flex-col h-[100svh] lg:h-[full] p-4 lg:flex-row gap-4">
+		<div class="flex flex-col flex-1 grid-rows-2 gap-4 order-2 lg:order-1">
+			<div class="flex flex-1 flex-col">
+				<Hero />
+			</div>
+			<div class="flex gap-4">
+				<div class="flex flex-col flex-1 aspect-square md:aspect-auto lg:aspect-square">
+					<Number gradient="bg-teal-500" title="7" extra="+" body="yrs of Freelancing" />
+				</div>
+				<div class="flex flex-col flex-1 aspect-square md:aspect-auto lg:aspect-square">
+					<Number gradient="bg-amber-400" title="4" extra="+" body="yrs of Undergrad" />
+				</div>
+				<div class="flex flex-col flex-1 aspect-square md:aspect-auto lg:aspect-square">
+					<Number gradient="bg-red-400" title="∞" extra="+" body="hrs of Leetcode" />
+				</div>
+			</div>
+		</div>
+		<div class="grid flex-1 grid-cols-2 grid-rows-6 gap-4 order-1">
+			<div class="flex col-span-2 flex-1">
+				<Navbar />
+			</div>
+			<div class="flex row-span-5 flex-1">
+				<Headshot />
+			</div>
+			<div class="flex row-span-1 flex-1">
+				<Name />
+			</div>
+			<div class="flex row-span-3 flex-1">
+				<Location />
+			</div>
+			<div class="flex row-span-1 flex-1">
+				<Social />
+			</div>
+		</div>
+	</div>
+	<div class="flex flex-col lg:flex-row p-4 pt-0 flex-1 gap-4">
+		<div class="flex flex-col lg:basis-3/5 aspect-video lg:aspect-auto order-2">
+			<Porfolio />
+		</div>
+		<div class="flex flex-col lg:basis-2/5 order-1">
+			<About />
+		</div>
+	</div>
+</Layout>

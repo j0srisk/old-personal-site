@@ -1,0 +1,15 @@
+---
+const { location, photo } = Astro.props
+console.log(location, photo)
+---
+
+<div class="card">
+	<div class=`w-full h-full bg-[url(Austin.jpg)] bg-cover flex justify-between`>
+		<div class="bg-noisy">
+			<div class="flex justify-between items-center p-2 px-4 md:p-4">
+				<p class="text-accent md:text-lg lg:text-sm">Current Location</p>
+				<h2 class="text-primary text-sm md:text-2xl">Austin</h2>
+			</div>
+		</div>
+	</div>
+</div>
