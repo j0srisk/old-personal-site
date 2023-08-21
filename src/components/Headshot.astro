@@ -1,9 +1,9 @@
 ---
-
+const { photo } = Astro.props
 ---
 
 <div class="card">
 	<div class="relative rounded-xl flex items-end justify-center h-full bg-noisy bg-slate-300">
-		<img src="MemojiYawn.png" alt="Joseph Risk Memoji Yawing" class="" loading="eager" />
+		<img src=`${photo}` alt="Joseph Risk Memoji" class="" loading="eager" />
 	</div>
 </div>

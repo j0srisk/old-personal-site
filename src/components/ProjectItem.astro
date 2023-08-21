@@ -1,0 +1,42 @@
+---
+const { icon, title, date, link, github, description } = Astro.props
+---
+
+<div class="flex w-full gap-4 flex-col">
+	<div class="flex relative aspect-video">
+		<div
+			class="flex-1 h-full rounded-lg bg-cover bg-center shadow-md"
+			style=`background-image: url(${icon});`
+		>
+			<div
+				class="w-full h-full flex gap-8 items-center justify-center rounded-lg bg-black bg-opacity-70 opacity-0 hover:opacity-100 transition-all duration-500 ease-in-out"
+			>
+				<a href={link} class="h-1/4 aspect-square">
+					<img src=`Link.svg` alt="icon" class="object-scale-down" />
+				</a>
+				<a href={github} class="h-1/4 aspect-square">
+					<img src=`GitHub.svg` alt="icon" class="object-scale-down" />
+				</a>
+			</div>
+		</div>
+	</div>
+	<div class="bg-white bg-opacity-10 w-[1px] rounded-xl max-h-full hidden"></div>
+	<div class="flex flex-col flex-1 items-start justify-between gap-4">
+		<div class="flex flex-col w-full">
+			<div class="flex flex-col justify-between w-full">
+				<div class="flex justify-between w-full items-center">
+					<p class="text-primary text-lg md:text-xl text-left">{title}</p>
+				</div>
+			</div>
+			<p class="text-accent w-4/5">
+				{description}
+			</p>
+		</div>
+		<div class="w-full flex flex-col gap-2">
+			<p class="text-accent text-right">Tools Used:</p>
+			<div class="flex flex-wrap gap-1 h-7 w-full items-end justify-end">
+				<slot />
+			</div>
+		</div>
+	</div>
+</div>

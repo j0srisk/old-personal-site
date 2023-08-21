@@ -1,0 +1,26 @@
+---
+const { icon, title, date, subtitle1, subtitle2, subtitle3, description } = Astro.props
+---
+
+<div class="flex w-full gap-4">
+	<div class="flex pt-1">
+		<img src=`${icon}` class="h-[48px] w-[48px] rounded-lg shadow-md" />
+	</div>
+	<div class="bg-white bg-opacity-10 w-[1px] rounded-xl max-h-full"></div>
+	<div class="flex flex-col flex-1 items-start justify-start gap-2">
+		<div class="flex flex-col justify-between w-full">
+			<div class="flex flex-col justify-between w-full items-start lg:flex-row">
+				<p class="text-primary text-lg md:text-xl text-left">{title}</p>
+				<p class="text-accent text-md text-white text-right">{date}</p>
+			</div>
+		</div>
+		<div class="flex flex-col">
+			<p class="text-accent">{subtitle1}</p>
+			<p class="text-accent">{subtitle2}</p>
+			<p class="text-accent">{subtitle3}</p>
+		</div>
+		<p class="text-accent">
+			{description}
+		</p>
+	</div>
+</div>
