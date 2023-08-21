@@ -1,0 +1,16 @@
+---
+name: Resume GPT
+description: Description Here
+icon: resumegpt.png
+tools:
+  [
+    { icon: openai.svg, background: 'bg-[#0CA37F]' },
+    { icon: react.svg, background: 'bg-[#61DAFB]' },
+    { icon: tailwindcss.svg, background: 'bg-[#38b2ac]' },
+    { icon: javascript.svg, background: 'bg-[#EFDB50]' },
+    { icon: netlify.svg, background: 'bg-[#004846]' }
+  ]
+
+draft: false
+order: 1
+---

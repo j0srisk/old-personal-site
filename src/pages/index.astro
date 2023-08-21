@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions'
+import { filterProjects, sortProjects } from '../utils/ProjectUtilites.js'
 
 import Card from '../components/Card.astro'
 import Headshot from '../components/Headshot.astro'
@@ -13,6 +14,26 @@ import ResumeItem from '../components/ResumeItem.astro'
 import ProjectItem from '../components/ProjectItem.astro'
 import Devicon from '../components/Devicon.astro'
 import ProjectPreview from '../components/ProjectPreview.astro'
+
+let webflowProjects = await Astro.glob('../pages/projects/webflow/*.md')
+webflowProjects = filterProjects(webflowProjects)
+webflowProjects = sortProjects(webflowProjects)
+
+let webdevProjects = await Astro.glob('../pages/projects/webdev/*.md')
+webdevProjects = filterProjects(webdevProjects)
+webdevProjects = sortProjects(webdevProjects)
+
+let staticProjects = await Astro.glob('../pages/projects/static/*.md')
+staticProjects = filterProjects(staticProjects)
+staticProjects = sortProjects(staticProjects)
+
+let educations = await Astro.glob('../pages/education/*.md')
+educations = filterProjects(educations)
+educations = sortProjects(educations)
+
+let experiences = await Astro.glob('../pages/experience/*.md')
+experiences = filterProjects(experiences)
+experiences = sortProjects(experiences)
 ---
 
 <!DOCTYPE html>
@@ -101,45 +122,40 @@ import ProjectPreview from '../components/ProjectPreview.astro'
 				<div id="education" class="">
 					<Card heading="Education">
 						<div class="flex flex-col gap-8 w-full">
-							<ResumeItem
-								icon="McCombs.jpg"
-								title="University of Texas at Austin"
-								date="December 2022"
-								subtitle1="McCombs School of Business"
-								subtitle2="BBA in Management Information Systems"
-								subtitle3="Final GPA: 3.74"
-								description="4 Semesters University Honors"
-							/>
+							{
+								educations.map((education) => (
+									<ResumeItem
+										icon={education.frontmatter.icon}
+										title={education.frontmatter.name}
+										date={education.frontmatter.date}
+										description={education.frontmatter.description}
+									>
+										{education.frontmatter.subtexts.map((subtext) => (
+											<p class="text-accent ">{subtext}</p>
+										))}
+									</ResumeItem>
+								))
+							}
 						</div>
 					</Card>
 				</div>
 				<div id="experience" class="pt-4">
 					<Card heading="Experience">
 						<div class="flex flex-col gap-8 w-full">
-							<ResumeItem
-								icon="Neutrino.png"
-								title="Neutrino Web Development"
-								date="June 2017 - December 2022"
-								subtitle1="Founder/Freelancer"
-								subtitle3="Austin, TX"
-								description="I've successfully collaborated with clients to identify their business needs and create custom web-based solutions. Using data analytics, I optimized user engagement and web performance. I implemented front-end technologies like HTML5 and React to enhance user experiences. Plus, I contributed to revenue growth by adopting proactive sales strategies and managing a strong client base."
-							/>
-							<ResumeItem
-								icon="Markel.jpg"
-								title="Markel Corporation"
-								date="June 2022 - August 2022"
-								subtitle1="Underwriting Intern"
-								subtitle2="Austin, TX"
-								description="In a Fortune 500 company, I gained solid corporate experience, presenting data-driven insights on industry trends to executives. I cooperated with a DevOps team to explore emerging technologies for the surety business. Moreover, I bolstered underwriters in risk analysis by scrutinizing financial statements and employing financial modeling techniques."
-							/>
-							<ResumeItem
-								icon="Frontier.png"
-								title="Frontier Extraction"
-								date="January 2020 - January 2022"
-								subtitle1="Founding Partner"
-								subtitle2="Lincoln, NE"
-								description="I have valuable entrepreneurial experience from setting up a hemp processing and brokering venture. I ensured compliance with regulations by working closely with local authorities on licensing matters. Additionally, I oversaw the IT infrastructure, which assured smooth business operations and maintained data integrity."
-							/>
+							{
+								experiences.map((experience) => (
+									<ResumeItem
+										icon={experience.frontmatter.icon}
+										title={experience.frontmatter.name}
+										date={experience.frontmatter.date}
+										description={experience.frontmatter.description}
+									>
+										{experience.frontmatter.subtexts.map((subtext) => (
+											<p class="text-accent ">{subtext}</p>
+										))}
+									</ResumeItem>
+								))
+							}
 						</div>
 					</Card>
 				</div>
@@ -147,141 +163,57 @@ import ProjectPreview from '../components/ProjectPreview.astro'
 					<div id="" class="lg:w-[calc(66.666667%-1rem)] md:w-1/2 flex-col gap-4 flex h-fit">
 						<Card heading="React Projects" height="fit">
 							<div class="flex w-full">
-								<div class="grid w-full lg:grid-cols-2 grid-cols-1 gap-4">
-									<ProjectItem
-										icon="resumegpt.png"
-										title="ResumeGPT"
-										date="December 2022"
-										description="Description Here"
-										link="https://cv-application.josephrisk.com"
-										github="https://www.google.com"
-									>
-										<Devicon icon="openai.svg" backgroundColor="bg-[#0CA37F]" />
-										<Devicon icon="react.svg" backgroundColor="bg-[#61DAFB]" />
-										<Devicon icon="tailwindcss.svg" backgroundColor="bg-[#38b2ac]" />
-										<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-										<Devicon icon="netlify.svg" backgroundColor="bg-[#004846]" />
-									</ProjectItem>
-									<ProjectItem
-										icon="nothotdog.png"
-										title="Not Hotdog"
-										description="Description Here"
-										link="https://nothotdog.josephrisk.com/"
-										github="https://www.google.com"
-									>
-										<Devicon icon="pytorch.svg" backgroundColor="bg-[#EE4C2C]" />
-										<Devicon icon="docker.svg" backgroundColor="bg-[#019BC6]" />
-										<Devicon icon="react.svg" backgroundColor="bg-[#61DAFB]" />
-										<Devicon icon="tailwindcss.svg" backgroundColor="bg-[#38b2ac]" />
-										<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-										<Devicon icon="netlify.svg" backgroundColor="bg-[#004846]" />
-									</ProjectItem>
-									<ProjectItem
-										icon="mockuptool.png"
-										title="Mockup Tool"
-										description="Description Here"
-										link="https://memory-card.josephrisk.com"
-										github="https://www.google.com"
-									>
-										<Devicon icon="react.svg" backgroundColor="bg-[#61DAFB]" />
-										<Devicon icon="tailwindcss.svg" backgroundColor="bg-[#38b2ac]" />
-										<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-										<Devicon icon="netlify.svg" backgroundColor="bg-[#004846]" />
-									</ProjectItem>
-									<ProjectItem
-										icon="memorycard.png"
-										title="Memory Card Game"
-										description="Description Here"
-										link="https://memory-card.josephrisk.com"
-										github="https://www.google.com"
-									>
-										<Devicon icon="react.svg" backgroundColor="bg-[#61DAFB]" />
-										<Devicon icon="tailwindcss.svg" backgroundColor="bg-[#38b2ac]" />
-										<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-										<Devicon icon="netlify.svg" backgroundColor="bg-[#004846]" />
-									</ProjectItem>
-									<ProjectItem
-										icon="battleship.png"
-										title="Battleship"
-										description="Description Here"
-										link="https://battleship.josephrisk.com"
-										github="https://www.google.com"
-									>
-										<Devicon icon="vitest.svg" backgroundColor="bg-[#242424]" />
-										<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-										<Devicon icon="netlify.svg" backgroundColor="bg-[#004846]" />
-									</ProjectItem>
-									<ProjectItem
-										icon="weatherapp.png"
-										title="Weather App"
-										description="Description Here"
-										link="https://weather-app.josephrisk.com"
-										github="https://www.google.com"
-									>
-										<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-										<Devicon icon="netlify.svg" backgroundColor="bg-[#004846]" />
-									</ProjectItem>
-									<ProjectItem
-										icon="etchasketch.png"
-										title="Etch A Sketch"
-										description="Description Here"
-										link="https://etch-a-sketch.josephrisk.com/"
-										github="https://www.google.com"
-									>
-										<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-										<Devicon icon="netlify.svg" backgroundColor="bg-[#004846]" />
-									</ProjectItem>
+								<div class="grid w-full lg:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8">
+									{
+										webdevProjects.map((project) => (
+											<ProjectItem
+												icon={project.frontmatter.icon}
+												title={project.frontmatter.name}
+												description={project.frontmatter.description}
+												link={project.frontmatter.link}
+											>
+												{project.frontmatter.tools.map((tool) => (
+													<Devicon icon={tool.icon} backgroundColor={tool.background} />
+												))}
+											</ProjectItem>
+										))
+									}
 								</div>
 							</div>
 						</Card>
 					</div>
 					<div id="" class="flex-1 flex-col gap-4 flex h-fit">
 						<Card heading="Static Site Projects" height="fit">
-							<ProjectItem
-								icon="personalsite.png"
-								title="Personal Site"
-								description="Description Here"
-								link="https://www.josephrisk.com"
-								github="https://www.google.com"
-							>
-								<Devicon icon="astro.png" backgroundColor="bg-indigo-700" />
-								<Devicon icon="tailwindcss.svg" backgroundColor="bg-[#38b2ac]" />
-								<Devicon icon="javascript.svg" backgroundColor="bg-[#EFDB50]" />
-								<Devicon icon="azure.svg" backgroundColor="bg-white" />
-							</ProjectItem>
+							{
+								staticProjects.map((project) => (
+									<ProjectItem
+										icon={project.frontmatter.icon}
+										title={project.frontmatter.name}
+										description={project.frontmatter.description}
+										link={project.frontmatter.link}
+									>
+										{project.frontmatter.tools.map((tool) => (
+											<Devicon icon={tool.icon} backgroundColor={tool.background} />
+										))}
+									</ProjectItem>
+								))
+							}
 						</Card>
 						<Card heading=" Webflow Projects" height="fit">
-							<ProjectItem
-								icon="MockupWebflow.jpg"
-								title="Doloramics Landing Page"
-								date="December 2022"
-								description="Description Here"
-								link="https://www.doloramics.com"
-								github="https://www.google.com"
-							>
-								<Devicon icon="webflow.png" backgroundColor="bg-[#4354FE]" />
-								<Devicon icon="figma.svg" backgroundColor="bg-white" />
-							</ProjectItem>
-							<ProjectItem
-								icon="westlake.png"
-								title="Westlake Auto Care"
-								description="Description Here"
-								link="https://www.westlakeautocare.com"
-								github="https://www.google.com"
-							>
-								<Devicon icon="webflow.png" backgroundColor="bg-[#4354FE]" />
-								<Devicon icon="figma.svg" backgroundColor="bg-white" />
-							</ProjectItem>
-							<ProjectItem
-								icon="happyair.png"
-								title="Happy Air HVAC"
-								description="Description Here"
-								link="https://www.doloramics.com"
-								github="https://www.google.com"
-							>
-								<Devicon icon="webflow.png" backgroundColor="bg-[#4354FE]" />
-								<Devicon icon="figma.svg" backgroundColor="bg-white" />
-							</ProjectItem>
+							{
+								webflowProjects.map((project) => (
+									<ProjectItem
+										icon={project.frontmatter.icon}
+										title={project.frontmatter.name}
+										description={project.frontmatter.description}
+										link={project.frontmatter.link}
+									>
+										{project.frontmatter.tools.map((tool) => (
+											<Devicon icon={tool.icon} backgroundColor={tool.background} />
+										))}
+									</ProjectItem>
+								))
+							}
 						</Card>
 					</div>
 				</div>
