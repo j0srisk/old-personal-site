@@ -1,10 +1,11 @@
 ---
-const { backgroundImage, text } = Astro.props
+import Hover from './Hover.astro'
+const { backgroundImage, text, link } = Astro.props
 ---
 
 <a
 	href=""
-	class="flex-1 h-full rounded-xl bg-cover bg-center"
+	class="flex-1 h-full rounded-lg bg-cover bg-center hidden"
 	style=`background-image: url(${backgroundImage});`
 >
 	<div
@@ -13,3 +14,8 @@ const { backgroundImage, text } = Astro.props
 		<h3 class="text-white font-medium">{text}</h3>
 	</div>
 </a>
+
+<div class="relative flex h-full w-fit rounded-lg shadow-md">
+	<img src={backgroundImage} class="w-full h-full object-cover rounded-lg" />
+	<Hover link={link}><h3 class="text-white font-medium">{text}</h3></Hover>
+</div>

@@ -2,6 +2,7 @@
 name: Not Hotdog
 description: Description Here
 icon: nothotdog.png
+link: https://nothotdog.josephrisk.com
 tools:
   [
     { icon: pytorch.svg, background: 'bg-[#EE4C2C]' },

@@ -3,6 +3,7 @@ import { filterProjects, sortProjects } from '../utils/ProjectUtilites.js'
 import Card from './Card.astro'
 import ProjectItem from './ProjectItem.astro'
 import Devicon from './Devicon.astro'
+import Hover from './Hover.astro'
 
 const { category } = Astro.props
 
@@ -20,7 +21,7 @@ projects = sortProjects(projects)
 			link={project.frontmatter.link}
 		>
 			{project.frontmatter.tools.map((tool) => (
-				<Devicon icon={tool.icon} backgroundColor={tool.background} />
+				<Devicon icon={tool.icon} backgroundColor={tool.background} slot="tools" />
 			))}
 		</ProjectItem>
 	))

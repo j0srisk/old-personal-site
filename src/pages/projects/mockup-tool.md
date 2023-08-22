@@ -2,6 +2,7 @@
 name: Mockup Tool
 description: Description Here
 icon: mockuptool.png
+link: https://mockup-tool.josephrisk.com
 tools:
   [
     { icon: react.svg, background: 'bg-[#61DAFB]' },

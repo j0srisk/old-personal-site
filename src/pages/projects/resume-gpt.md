@@ -2,6 +2,7 @@
 name: Resume GPT
 description: Description Here
 icon: resumegpt.png
+link: https://cv-application.josephrisk.com
 tools:
   [
     { icon: openai.svg, background: 'bg-[#0CA37F]' },
