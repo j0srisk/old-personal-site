@@ -1,48 +1,27 @@
 ---
 import { ViewTransitions } from 'astro:transitions'
-import { filterProjects, sortProjects } from '../utils/ProjectUtilites.js'
 
-import Card from '../components/Card.astro'
-import Headshot from '../components/Headshot.astro'
-import Number from '../components/Number.astro'
-import Name from '../components/Name.astro'
-import Location from '../components/Location.astro'
-import Social from '../components/Social.astro'
-import Hero from '../components/Hero.astro'
-import Navbar from '../components/Navbar.astro'
-import ResumeItem from '../components/ResumeItem.astro'
-import ProjectItem from '../components/ProjectItem.astro'
-import Devicon from '../components/Devicon.astro'
-import ProjectPreview from '../components/ProjectPreview.astro'
-import Footer from '../components/Footer.astro'
+import Headshot from '../components/cards/Headshot.astro'
+import Number from '../components/cards/Number.astro'
 
-let webflowProjects = await Astro.glob('../pages/projects/webflow/*.md')
-webflowProjects = filterProjects(webflowProjects)
-webflowProjects = sortProjects(webflowProjects)
-
-let webdevProjects = await Astro.glob('../pages/projects/webdev/*.md')
-webdevProjects = filterProjects(webdevProjects)
-webdevProjects = sortProjects(webdevProjects)
-
-let staticProjects = await Astro.glob('../pages/projects/static/*.md')
-staticProjects = filterProjects(staticProjects)
-staticProjects = sortProjects(staticProjects)
-
-let academicProjects = await Astro.glob('../pages/projects/academic/*.md')
-academicProjects = filterProjects(academicProjects)
-academicProjects = sortProjects(academicProjects)
-
-let educations = await Astro.glob('../pages/education/*.md')
-educations = filterProjects(educations)
-educations = sortProjects(educations)
-
-let experiences = await Astro.glob('../pages/experience/*.md')
-experiences = filterProjects(experiences)
-experiences = sortProjects(experiences)
+import Name from '../components/cards/Name.astro'
+import Location from '../components/cards/Location.astro'
+import Social from '../components/cards/Social.astro'
+import Hero from '../components/cards/Hero.astro'
+import Navbar from '../components/cards/Navbar.astro'
+import Footer from '../components/cards/Footer.astro'
+import About from '../components/cards/About.astro'
+import Projects from '../components/cards/Projects.astro'
+import Education from '../components/cards/Education.astro'
+import Experience from '../components/cards/Experience.astro'
+import WebdevProjects from '../components/cards/WebdevProjects.astro'
+import WebflowProjects from '../components/cards/WebflowProjects.astro'
+import StaticProjects from '../components/cards/StaticProjects.astro'
+import AcademicProjects from '../components/cards/AcademicProjects.astro'
 ---
 
 <!DOCTYPE html>
-<html lang="en" class="bg-black">
+<html lang="en" class="bg-black scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -57,7 +36,6 @@ experiences = sortProjects(experiences)
 		class="font-astro w-full flex relative justify-center items-center bg-gradient-to-r from-gray-900 to-black no-scrollbar scroll-smooth"
 	>
 		<div class="flex flex-col w-full max-w-screen-xl z-10 justify-center items-center">
-			{/* Main Page */}
 			<div class="lg:h-screen flex flex-col">
 				<div class="flex flex-col h-[100svh] p-4 md:h-screen lg:flex-row gap-4">
 					<div class="flex flex-col gap-4 flex-1 lg:order-2">
@@ -66,14 +44,14 @@ experiences = sortProjects(experiences)
 						</div>
 						<div class="flex flex-1 gap-4">
 							<div class="flex flex-col flex-1">
-								<Headshot photo="MemojiYawn.png" />
+								<Headshot />
 							</div>
 							<div class="flex flex-col flex-1 gap-4">
 								<div>
-									<Name title="Name" text="Joseph Risk" />
+									<Name />
 								</div>
 								<div class="flex-1">
-									<Location location="Austin" photo="Austin.jpg" />
+									<Location />
 								</div>
 								<div>
 									<Social />
@@ -83,163 +61,45 @@ experiences = sortProjects(experiences)
 					</div>
 					<div class="flex flex-col flex-1 gap-4">
 						<div class="flex flex-col flex-1">
-							<Hero gif="Blue.gif" />
+							<Hero />
 						</div>
 						<div class="flex gap-4">
 							<div class="flex flex-col flex-1 lg:aspect-square md:aspect-auto aspect-square">
-								<Number gradient="bg-teal-500" title="7" extra="+" body="yrs of Freelancing" />
+								<Number backgroundColor="#2dd4bf" number="7" symbol="+" text="yrs of Freelancing" />
 							</div>
 							<div class="flex flex-col flex-1">
-								<Number gradient="bg-amber-400" title="4" extra="+" body="yrs of Undergrad" />
+								<Number backgroundColor="#fbbf24" number="4" symbol="+" text="yrs of Undergrad" />
 							</div>
 							<div class="flex flex-col flex-1">
-								<Number gradient="bg-red-400" title="∞" extra="+" body="hrs of Leetcode" />
+								<Number backgroundColor="#f87171" number="∞" symbol="+" text="hrs of Leetcode" />
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="flex flex-col lg:flex-row pt-0 gap-4 flex-1 p-4">
 					<div class="flex flex-col lg:basis-2/5 overflow-hidden">
-						<Card heading="About Me" linkText="Download CV" link="JosephRiskResumeSU23.pdf">
-							<p class="text-accent md:text-base lg:text-sm">
-								Recent graduate from the University of Texas at Austin with classwork and experience
-								in software development, data analytics, and other emerging technologies. Used to
-								the freelancing lifestyle but currently setting my sights on a full-time role where
-								I can contribute to cutting-edge projects and help further drive digital
-								transformation. Currently interested in practical LLM applications and sharpening my
-								web development skills.
-							</p>
-						</Card>
+						<About />
 					</div>
 					<div class="flex flex-col lg:basis-3/5 aspect-video lg:aspect-auto">
-						<Card heading="Projects" linkText="See All" link="#projects">
-							<div class="w-full h-full flex gap-4">
-								<ProjectPreview backgroundImage="MockupWebflow.jpg" text="Webflow" />
-								<ProjectPreview backgroundImage="MockupFrontEnd2.jpg" text="Development" />
-								<ProjectPreview backgroundImage="MockupAcademic3.jpg" text="Academic" />
-							</div>
-						</Card>
+						<Projects />
 					</div>
 				</div>
 			</div>
-			{/* Resume Page */}
 			<div class="flex flex-col px-4 w-screen max-w-screen-xl">
 				<div id="education" class="">
-					<Card heading="Education">
-						<div class="flex flex-col gap-8 w-full">
-							{
-								educations.map((education) => (
-									<ResumeItem
-										icon={education.frontmatter.icon}
-										title={education.frontmatter.name}
-										date={education.frontmatter.date}
-										description={education.frontmatter.description}
-									>
-										{education.frontmatter.subtexts.map((subtext) => (
-											<p class="text-accent ">{subtext}</p>
-										))}
-									</ResumeItem>
-								))
-							}
-						</div>
-					</Card>
+					<Education />
 				</div>
 				<div id="experience" class="pt-4">
-					<Card heading="Experience">
-						<div class="flex flex-col gap-8 w-full">
-							{
-								experiences.map((experience) => (
-									<ResumeItem
-										icon={experience.frontmatter.icon}
-										title={experience.frontmatter.name}
-										date={experience.frontmatter.date}
-										description={experience.frontmatter.description}
-									>
-										{experience.frontmatter.subtexts.map((subtext) => (
-											<p class="text-accent ">{subtext}</p>
-										))}
-									</ResumeItem>
-								))
-							}
-						</div>
-					</Card>
+					<Experience />
 				</div>
 				<div id="projects" class="flex flex-col md:flex-row gap-4 pt-4">
 					<div id="" class="lg:w-[calc(66.666667%-1rem)] md:w-1/2 flex-col gap-4 flex h-fit">
-						<Card heading="React Projects" height="fit">
-							<div class="flex w-full">
-								<div class="grid w-full lg:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8">
-									{
-										webdevProjects.map((project) => (
-											<ProjectItem
-												icon={project.frontmatter.icon}
-												title={project.frontmatter.name}
-												description={project.frontmatter.description}
-												link={project.frontmatter.link}
-											>
-												{project.frontmatter.tools.map((tool) => (
-													<Devicon icon={tool.icon} backgroundColor={tool.background} />
-												))}
-											</ProjectItem>
-										))
-									}
-								</div>
-							</div>
-						</Card>
-						<Card heading="Academic Projects" height="fit">
-							<div class="flex w-full">
-								<div class="grid w-full lg:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8">
-									{
-										academicProjects.map((project) => (
-											<ProjectItem
-												icon={project.frontmatter.icon}
-												title={project.frontmatter.name}
-												description={project.frontmatter.description}
-												link={project.frontmatter.link}
-											>
-												{project.frontmatter.tools.map((tool) => (
-													<Devicon icon={tool.icon} backgroundColor={tool.background} />
-												))}
-											</ProjectItem>
-										))
-									}
-								</div>
-							</div>
-						</Card>
+						<WebdevProjects />
+						<AcademicProjects />
 					</div>
 					<div id="" class="flex-1 flex-col gap-4 flex h-full">
-						<Card heading="Static Site Projects" height="fit">
-							{
-								staticProjects.map((project) => (
-									<ProjectItem
-										icon={project.frontmatter.icon}
-										title={project.frontmatter.name}
-										description={project.frontmatter.description}
-										link={project.frontmatter.link}
-									>
-										{project.frontmatter.tools.map((tool) => (
-											<Devicon icon={tool.icon} backgroundColor={tool.background} />
-										))}
-									</ProjectItem>
-								))
-							}
-						</Card>
-						<Card heading="Webflow Projects" height="fit">
-							{
-								webflowProjects.map((project) => (
-									<ProjectItem
-										icon={project.frontmatter.icon}
-										title={project.frontmatter.name}
-										description={project.frontmatter.description}
-										link={project.frontmatter.link}
-									>
-										{project.frontmatter.tools.map((tool) => (
-											<Devicon icon={tool.icon} backgroundColor={tool.background} />
-										))}
-									</ProjectItem>
-								))
-							}
-						</Card>
+						<StaticProjects />
+						<WebflowProjects />
 					</div>
 				</div>
 			</div>
@@ -256,6 +116,7 @@ experiences = sortProjects(experiences)
 			>
 			</div>
 		</div>
+
 		<div class="hidden fixed top-0 left-0 w-screen h-screen">
 			<div
 				class="w-1/4 h-1/4 top-10 left-10 blur-max absolute bg-gradient-to-t from-blue-600 to-blue-700"
@@ -269,15 +130,6 @@ experiences = sortProjects(experiences)
 			@tailwind utilities;
 
 			@layer components {
-				.card {
-					@apply relative flex h-full w-full items-center justify-between overflow-hidden rounded-[13px] border border-white border-opacity-10 bg-white bg-opacity-10 backdrop-blur-sm;
-				}
-
-				.bg-noisy {
-					@apply h-full w-full;
-					background-image: url(/backgroundnoisy.webp);
-				}
-
 				.text-accent {
 					@apply text-xs font-medium text-gray-300 text-opacity-80 transition-all duration-200 group-hover:text-opacity-100;
 				}

@@ -1,14 +1,14 @@
 ---
-name: Battleship
+name: Weather App
 description: Description Here
-icon: battleship.png
+icon: weatherapp.png
 tools:
   [
-    { icon: vitest.svg, background: 'bg-[#242424]' },
     { icon: javascript.svg, background: 'bg-[#EFDB50]' },
     { icon: netlify.svg, background: 'bg-[#004846]' }
   ]
 
-draft: false
-order: 5
+category: webdev
+draft: true
+order: 6
 ---

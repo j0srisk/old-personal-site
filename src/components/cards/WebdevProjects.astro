@@ -1,0 +1,14 @@
+---
+import Card from '../Card.astro'
+import Header from '../Header.astro'
+import ProjectGallery from '../ProjectGallery.astro'
+---
+
+<Card>
+	<Header heading="Development Projects" />
+	<div class="flex w-full">
+		<div class="grid w-full lg:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8">
+			<ProjectGallery category="webdev" />
+		</div>
+	</div>
+</Card>

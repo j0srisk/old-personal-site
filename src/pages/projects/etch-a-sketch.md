@@ -1,13 +1,14 @@
 ---
-name: Weather App
+name: Etch A Sketch
 description: Description Here
-icon: weatherapp.png
+icon: etchasketch.png
 tools:
   [
     { icon: javascript.svg, background: 'bg-[#EFDB50]' },
     { icon: netlify.svg, background: 'bg-[#004846]' }
   ]
 
-draft: true
-order: 6
+category: webdev
+draft: false
+order: 7
 ---

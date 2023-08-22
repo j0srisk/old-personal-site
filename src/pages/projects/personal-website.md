@@ -10,6 +10,7 @@ tools:
     { icon: azure.svg, background: 'bg-white' }
   ]
 
+category: static
 draft: false
 order: 1
 ---

@@ -1,13 +1,39 @@
 ---
-const { heading, linkText, link, height } = Astro.props
+const { backgroundImage, backgroundColor, noisy, padding } = Astro.props
+
+let bgImage = 'none'
+if (backgroundImage) {
+	bgImage = `url(${backgroundImage})`
+}
+
+let bgColor = 'none'
+if (backgroundColor) {
+	bgColor = `${backgroundColor}`
+}
+
+let noisyImage = 'none'
+if (noisy === 'true') {
+	noisyImage = 'url(backgroundnoisy.webp)'
+}
+
+let paddingValue = 'p-4'
+if (padding) {
+	paddingValue = padding
+}
 ---
 
-<div class=`card p-4 flex-col gap-6 h-${height}`>
-	<div class="w-full flex items-center justify-between">
-		<h2 class="text-primary text-xl md:text-2xl">{heading}</h2>
-		<a href={link} target="_blank">
-			<p class="text-accent text-sm md:text-lg">{linkText}</p>
-		</a>
+<div
+	class="flex h-full w-full items-center justify-between overflow-hidden rounded-[13px] border border-white border-opacity-10 bg-white bg-opacity-10 backdrop-blur-sm"
+>
+	<div
+		class=`w-full h-full bg-cover bg-center ${bgColor}`
+		style={`background-image: ${bgImage}; background-color: ${bgColor}`}
+	>
+		<div
+			class=`flex flex-col w-full h-full gap-6 ${paddingValue}`
+			style=`background-image: ${noisyImage}`
+		>
+			<slot />
+		</div>
 	</div>
-	<slot />
 </div>

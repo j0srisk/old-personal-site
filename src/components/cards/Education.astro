@@ -1,0 +1,30 @@
+---
+import { filterProjects, sortProjects } from '../../utils/ProjectUtilites.js'
+import Card from '../Card.astro'
+import Header from '../Header.astro'
+import ResumeItem from '../ResumeItem.astro'
+
+let educations = await Astro.glob('../../pages/education/*.md')
+educations = filterProjects(educations)
+educations = sortProjects(educations)
+---
+
+<Card heading="Education">
+	<Header heading="Education" />
+	<div class="flex flex-col gap-8 w-full">
+		{
+			educations.map((education) => (
+				<ResumeItem
+					icon={education.frontmatter.icon}
+					title={education.frontmatter.name}
+					date={education.frontmatter.date}
+					description={education.frontmatter.description}
+				>
+					{education.frontmatter.subtexts.map((subtext) => (
+						<p class="text-accent ">{subtext}</p>
+					))}
+				</ResumeItem>
+			))
+		}
+	</div>
+</Card>

@@ -1,14 +1,15 @@
 ---
-name: Bevos' Books
+name: Conflict Management System
 description: Description Here
 icon: battleship.png
 tools:
   [
     { icon: vitest.svg, background: 'bg-[#242424]' },
     { icon: javascript.svg, background: 'bg-[#EFDB50]' },
-    { icon: azure.svg, background: 'bg-white' }
+    { icon: netlify.svg, background: 'bg-[#004846]' }
   ]
 
+category: academic
 draft: false
-order: 2
+order: 1
 ---

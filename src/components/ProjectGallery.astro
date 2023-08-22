@@ -1,0 +1,27 @@
+---
+import { filterProjects, sortProjects } from '../utils/ProjectUtilites.js'
+import Card from './Card.astro'
+import ProjectItem from './ProjectItem.astro'
+import Devicon from './Devicon.astro'
+
+const { category } = Astro.props
+
+let projects = await Astro.glob(`../pages/projects/*.{md,mdx}`)
+projects = filterProjects(projects, category)
+projects = sortProjects(projects)
+---
+
+{
+	projects.map((project) => (
+		<ProjectItem
+			icon={project.frontmatter.icon}
+			title={project.frontmatter.name}
+			description={project.frontmatter.description}
+			link={project.frontmatter.link}
+		>
+			{project.frontmatter.tools.map((tool) => (
+				<Devicon icon={tool.icon} backgroundColor={tool.background} />
+			))}
+		</ProjectItem>
+	))
+}

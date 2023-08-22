@@ -1,5 +1,5 @@
 ---
-name: Conflict Management System
+name: Battleship
 description: Description Here
 icon: battleship.png
 tools:
@@ -9,6 +9,7 @@ tools:
     { icon: netlify.svg, background: 'bg-[#004846]' }
   ]
 
+category: webdev
 draft: false
-order: 1
+order: 5
 ---

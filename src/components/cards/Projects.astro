@@ -1,0 +1,14 @@
+---
+import Card from '../Card.astro'
+import Header from '../Header.astro'
+import ProjectPreview from '../ProjectPreview.astro'
+---
+
+<Card>
+	<Header heading="Projects" text="See All" link="#projects" />
+	<div class="w-full h-full flex gap-4">
+		<ProjectPreview backgroundImage="MockupWebflow.jpg" text="Webflow" />
+		<ProjectPreview backgroundImage="MockupFrontEnd2.jpg" text="Development" />
+		<ProjectPreview backgroundImage="MockupAcademic3.jpg" text="Academic" />
+	</div>
+</Card>
