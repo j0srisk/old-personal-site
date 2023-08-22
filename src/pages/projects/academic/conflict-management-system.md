@@ -1,13 +1,14 @@
 ---
-name: Weather App
+name: Conflict Management System
 description: Description Here
-icon: weatherapp.png
+icon: battleship.png
 tools:
   [
+    { icon: vitest.svg, background: 'bg-[#242424]' },
     { icon: javascript.svg, background: 'bg-[#EFDB50]' },
     { icon: netlify.svg, background: 'bg-[#004846]' }
   ]
 
-draft: true
-order: 6
+draft: false
+order: 1
 ---

@@ -14,6 +14,7 @@ import ResumeItem from '../components/ResumeItem.astro'
 import ProjectItem from '../components/ProjectItem.astro'
 import Devicon from '../components/Devicon.astro'
 import ProjectPreview from '../components/ProjectPreview.astro'
+import Footer from '../components/Footer.astro'
 
 let webflowProjects = await Astro.glob('../pages/projects/webflow/*.md')
 webflowProjects = filterProjects(webflowProjects)
@@ -26,6 +27,10 @@ webdevProjects = sortProjects(webdevProjects)
 let staticProjects = await Astro.glob('../pages/projects/static/*.md')
 staticProjects = filterProjects(staticProjects)
 staticProjects = sortProjects(staticProjects)
+
+let academicProjects = await Astro.glob('../pages/projects/academic/*.md')
+academicProjects = filterProjects(academicProjects)
+academicProjects = sortProjects(academicProjects)
 
 let educations = await Astro.glob('../pages/education/*.md')
 educations = filterProjects(educations)
@@ -44,7 +49,7 @@ experiences = sortProjects(experiences)
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/MemojiFavicon.png" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Joseph Risk Portfolio Site</title>
+		<title>Joseph Risk Personal Site</title>
 
 		<ViewTransitions />
 	</head>
@@ -77,11 +82,11 @@ experiences = sortProjects(experiences)
 						</div>
 					</div>
 					<div class="flex flex-col flex-1 gap-4">
-						<div class="flex flex-1 flex-col">
+						<div class="flex flex-col flex-1">
 							<Hero gif="Blue.gif" />
 						</div>
 						<div class="flex gap-4">
-							<div class="flex flex-col flex-1 aspect-square">
+							<div class="flex flex-col flex-1 lg:aspect-square md:aspect-auto aspect-square">
 								<Number gradient="bg-teal-500" title="7" extra="+" body="yrs of Freelancing" />
 							</div>
 							<div class="flex flex-col flex-1">
@@ -95,7 +100,7 @@ experiences = sortProjects(experiences)
 				</div>
 				<div class="flex flex-col lg:flex-row pt-0 gap-4 flex-1 p-4">
 					<div class="flex flex-col lg:basis-2/5 overflow-hidden">
-						<Card heading="About Me" link="Read More">
+						<Card heading="About Me" linkText="Download CV" link="JosephRiskResumeSU23.pdf">
 							<p class="text-accent md:text-base lg:text-sm">
 								Recent graduate from the University of Texas at Austin with classwork and experience
 								in software development, data analytics, and other emerging technologies. Used to
@@ -107,7 +112,7 @@ experiences = sortProjects(experiences)
 						</Card>
 					</div>
 					<div class="flex flex-col lg:basis-3/5 aspect-video lg:aspect-auto">
-						<Card heading="Projects" link="See All">
+						<Card heading="Projects" linkText="See All" link="#projects">
 							<div class="w-full h-full flex gap-4">
 								<ProjectPreview backgroundImage="MockupWebflow.jpg" text="Webflow" />
 								<ProjectPreview backgroundImage="MockupFrontEnd2.jpg" text="Development" />
@@ -118,7 +123,7 @@ experiences = sortProjects(experiences)
 				</div>
 			</div>
 			{/* Resume Page */}
-			<div class="flex flex-col px-4 pb-4 w-screen max-w-screen-xl">
+			<div class="flex flex-col px-4 w-screen max-w-screen-xl">
 				<div id="education" class="">
 					<Card heading="Education">
 						<div class="flex flex-col gap-8 w-full">
@@ -181,8 +186,28 @@ experiences = sortProjects(experiences)
 								</div>
 							</div>
 						</Card>
+						<Card heading="Academic Projects" height="fit">
+							<div class="flex w-full">
+								<div class="grid w-full lg:grid-cols-2 grid-cols-1 gap-x-4 gap-y-8">
+									{
+										academicProjects.map((project) => (
+											<ProjectItem
+												icon={project.frontmatter.icon}
+												title={project.frontmatter.name}
+												description={project.frontmatter.description}
+												link={project.frontmatter.link}
+											>
+												{project.frontmatter.tools.map((tool) => (
+													<Devicon icon={tool.icon} backgroundColor={tool.background} />
+												))}
+											</ProjectItem>
+										))
+									}
+								</div>
+							</div>
+						</Card>
 					</div>
-					<div id="" class="flex-1 flex-col gap-4 flex h-fit">
+					<div id="" class="flex-1 flex-col gap-4 flex h-full">
 						<Card heading="Static Site Projects" height="fit">
 							{
 								staticProjects.map((project) => (
@@ -199,7 +224,7 @@ experiences = sortProjects(experiences)
 								))
 							}
 						</Card>
-						<Card heading=" Webflow Projects" height="fit">
+						<Card heading="Webflow Projects" height="fit">
 							{
 								webflowProjects.map((project) => (
 									<ProjectItem
@@ -217,6 +242,10 @@ experiences = sortProjects(experiences)
 						</Card>
 					</div>
 				</div>
+			</div>
+			{/* Footer */}
+			<div class="flex flex-col w-full max-w-screen-xl justify-center items-center p-4">
+				<Footer />
 			</div>
 		</div>
 
