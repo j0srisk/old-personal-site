@@ -1,9 +1,22 @@
 ---
-const { icon, backgroundColor } = Astro.props
+import { getEntry } from 'astro:content'
+import { Image } from 'astro:assets'
+
+const { tool } = Astro.props
+
+const toolLower = tool.toLowerCase()
+const devicon = await getEntry('devicons', toolLower)
+
+if (!devicon) {
+	throw new Error(`No devicon found for ${tool}`)
+}
+
+const { name, backgroundColor, icon } = devicon.data
 ---
 
 <div
-	class=`aspect-square flex justify-center items-center h-full p-1 rounded-md shadow-md ${backgroundColor}`
+	class="aspect-square flex justify-center items-center h-full p-1 rounded-md shadow-md"
+	style=`background-color: ${backgroundColor};`
 >
-	<img src=`${icon}` alt="icon" class="h-full w-full object-scale-down" />
+	<Image src={icon} alt={name} class="h-full w-full object-scale-down" />
 </div>

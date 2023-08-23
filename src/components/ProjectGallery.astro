@@ -1,28 +1,23 @@
 ---
-import { filterProjects, sortProjects } from '../utils/ProjectUtilites.js'
+import { getCollection, getEntry } from 'astro:content'
 import Card from './Card.astro'
 import ProjectItem from './ProjectItem.astro'
 import Devicon from './Devicon.astro'
 import Hover from './Hover.astro'
 
+import { Image } from 'astro:assets'
+
 const { category } = Astro.props
 
-let projects = await Astro.glob(`../pages/projects/*.{md,mdx}`)
-projects = filterProjects(projects, category)
-projects = sortProjects(projects)
+const projects = await getCollection('projects', ({ id, data }) => {
+	return id.startsWith(category) && data.isDraft !== true
+})
+
+projects.sort((a, b) => b.data.sortOrder - a.data.sortOrder)
+
+if (projects.length === 0) {
+	throw new Error(`No projects found for category ${category}`)
+}
 ---
 
-{
-	projects.map((project) => (
-		<ProjectItem
-			icon={project.frontmatter.icon}
-			title={project.frontmatter.name}
-			description={project.frontmatter.description}
-			link={project.frontmatter.link}
-		>
-			{project.frontmatter.tools.map((tool) => (
-				<Devicon icon={tool.icon} backgroundColor={tool.background} slot="tools" />
-			))}
-		</ProjectItem>
-	))
-}
+{projects.map((project) => <ProjectItem {...project.data} />)}

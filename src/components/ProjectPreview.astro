@@ -17,5 +17,5 @@ const { backgroundImage, text, link } = Astro.props
 
 <div class="relative flex h-full w-fit rounded-lg shadow-md">
 	<img src={backgroundImage} class="w-full h-full object-cover rounded-lg" />
-	<Hover link={link}><h3 class="text-white font-medium">{text}</h3></Hover>
+	<Hover link={link} text={text} />
 </div>

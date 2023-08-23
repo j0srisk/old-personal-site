@@ -1,33 +1,43 @@
 ---
+import { Image } from 'astro:assets'
+
 import Hover from './Hover.astro'
-const { icon, title, date, link, github, description } = Astro.props
+import Devicon from './Devicon.astro'
+
+const { cover, name, date, description, link, github, tools } = Astro.props
 ---
 
 <div class="flex w-full gap-4 flex-col">
 	<div class="flex relative aspect-video">
-		<img src=`${icon}` alt="icon" class="flex-1 h-full shadow-md object-cover rounded-lg" />
-		<Hover link={link} newTab="true">
-			<div class="block h-1/5 aspect-square">
-				<img src=`Link.svg` alt="link" class="object-scale-down" />
-			</div>
-		</Hover>
+		<Image
+			src={cover}
+			alt="icon"
+			class="flex-1 h-full shadow-md rounded-lg object-cover aspect-video"
+		/>
+		<Hover link={link} github={github} newTab="true" />
 	</div>
 	<div class="bg-white bg-opacity-10 w-[1px] rounded-xl max-h-full hidden"></div>
 	<div class="flex flex-col flex-1 items-start justify-between gap-4">
 		<div class="flex flex-col w-full">
 			<div class="flex flex-col justify-between w-full">
 				<div class="flex justify-between w-full items-center">
-					<p class="text-primary text-lg md:text-xl text-left">{title}</p>
+					<p class="text-primary text-lg md:text-xl text-left">{name}</p>
 				</div>
 			</div>
 			<p class="text-accent w-4/5">
 				{description}
 			</p>
 		</div>
-		<div class="w-full flex flex-col gap-2">
+		<div class="w-full flex flex-col gap-1.5">
 			<p class="text-accent text-right">Tools Used:</p>
-			<div class="flex flex-wrap gap-1 h-7 w-full items-end justify-end">
-				<slot name="tools" />
+			<div class="flex flex-wrap gap-1.5 h-8 w-full items-end justify-end">
+				{
+					tools.map((tool) => (
+						<>
+							<Devicon tool={tool} />
+						</>
+					))
+				}
 			</div>
 		</div>
 	</div>
