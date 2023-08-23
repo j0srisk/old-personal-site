@@ -10,21 +10,21 @@ const { name, date, icon, subtexts, description } = Astro.props
 	<div class="bg-white bg-opacity-10 w-[1px] rounded-xl max-h-full"></div>
 	<div class="flex flex-col flex-1 items-start justify-start gap-2">
 		<div class="flex flex-col justify-between w-full">
-			<div class="flex flex-col justify-between w-full items-start lg:flex-row">
+			<div class="flex flex-col justify-between w-full items-start lg:flex-row gap-2">
 				<p class="text-primary text-lg md:text-xl text-left">{name}</p>
-				<p class="text-accent text-md text-white text-right">{date}</p>
+				<p class="text-accent text-xs md:text-base text-white text-right">{date}</p>
 			</div>
 		</div>
 		<div class="flex flex-col">
 			{
 				subtexts.map((subtext) => (
 					<>
-						<p class="text-accent">{subtext}</p>
+						<p class="text-accent text-xs md:text-sm">{subtext}</p>
 					</>
 				))
 			}
 		</div>
-		<p class="text-accent">
+		<p class="text-accent text-xs md:text-sm">
 			{description}
 		</p>
 	</div>

@@ -25,12 +25,12 @@ const { cover, name, date, description, link, github, tools } = Astro.props
 					<p class="text-primary text-lg md:text-xl text-left">{name}</p>
 				</div>
 			</div>
-			<p class="text-accent w-4/5">
+			<p class="text-accent text-xs md:text-sm">
 				{description}
 			</p>
 		</div>
 		<div class="w-full flex flex-col gap-1.5">
-			<p class="text-accent text-right">Tools Used:</p>
+			<p class="text-accent text-xs md:text-sm text-right">Tools Used:</p>
 			<div class="flex flex-wrap gap-1.5 h-8 w-full items-end justify-end">
 				{
 					tools.map((tool) => (

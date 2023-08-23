@@ -8,8 +8,12 @@ if (newTab == 'true') {
 ---
 
 <div class="relative w-full flex items-center justify-between">
-	<h2 class="text-primary text-xl md:text-2xl">{heading}</h2>
+	<h2 class="text-primary md:text-2xl text-xl">{heading}</h2>
 	<a href={link} target={target}>
-		<p class="text-accent text-sm md:text-lg">{text}</p>
+		<p
+			class="text-accent text-sm md:text-base hover:text-white transition-all ease-in-out duration-300"
+		>
+			{text}
+		</p>
 	</a>
 </div>
