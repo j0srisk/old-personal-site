@@ -5,8 +5,10 @@ import noisyBackground from '../assets/images/noisy.webp'
 const optimizedBackground = await getImage({ src: noisyBackground, width: 1000, height: 1000 })
 ---
 
-<div
-	class="absolute top-0 left-0 w-full h-full bg-repeat bg-cover bg-center"
-	style={`background-image: url(${optimizedBackground.src});`}
->
+<div class="absolute top-0 left-0 w-full h-full opacity-100">
+	<div
+		class="w-full h-full bg-repeat"
+		style={`background-image: url(${optimizedBackground.src} ); background-size: 50%`}
+	>
+	</div>
 </div>

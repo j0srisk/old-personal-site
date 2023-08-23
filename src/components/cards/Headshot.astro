@@ -3,13 +3,13 @@ import { Image } from 'astro:assets'
 import Card from '../Card.astro'
 import BackgroundNoise from '../BackgroundNoise.astro'
 import BackgroundColor from '../BackgroundColor.astro'
-import memoji from '../../assets/images/memojiyawn.png'
+import memoji from '../../assets/images/memojiwave.png'
 ---
 
 <Card padding="0">
 	<BackgroundColor color="#CBD5E1" />
 	<BackgroundNoise />
 	<div class="relative rounded-xl flex items-end justify-center h-full">
-		<Image src={memoji} alt="Joseph Risk Memoji" loading="eager" />
+		<Image src={memoji} alt="Joseph Risk Memoji" loading="eager" quality={100} />
 	</div>
 </Card>
