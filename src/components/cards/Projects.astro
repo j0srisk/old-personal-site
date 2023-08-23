@@ -1,14 +1,39 @@
 ---
+import { Image } from 'astro:assets'
 import Card from '../Card.astro'
 import Header from '../Header.astro'
 import ProjectPreview from '../ProjectPreview.astro'
+import Hover from '../Hover.astro'
+
+import backgroundImage1 from '../../assets/images/mockupwebflow.jpg'
+import backgroundImage2 from '../../assets/images/mockupdevelopment.jpg'
+import backgroundImage3 from '../../assets/images/mockupacademic.jpg'
 ---
 
 <Card>
 	<Header heading="Projects" text="See All" link="#projects" />
 	<div class="w-full h-full flex gap-4">
-		<ProjectPreview backgroundImage="MockupWebflow.jpg" text="Webflow" link="#webflow" />
-		<ProjectPreview backgroundImage="MockupFrontEnd2.jpg" text="Development" link="#webdev" />
-		<ProjectPreview backgroundImage="MockupAcademic3.jpg" text="Academic" link="#academic" />
+		<div class="relative flex h-full w-fit rounded-lg shadow-md gap-4">
+			<div class="relative flex h-full w-fit rounded-lg shadow-md">
+				<Image src={backgroundImage1} alt="Webflow" class="w-full h-full object-cover rounded-lg" />
+				<Hover link="#webflow" text="Webflow" />
+			</div>
+			<div class="relative flex h-full w-fit rounded-lg shadow-md">
+				<Image
+					src={backgroundImage2}
+					alt="Development"
+					class="w-full h-full object-cover rounded-lg"
+				/>
+				<Hover link="#development" text="Development" />
+			</div>
+			<div class="relative flex h-full w-fit rounded-lg shadow-md">
+				<Image
+					src={backgroundImage3}
+					alt="Academic"
+					class="w-full h-full object-cover rounded-lg"
+				/>
+				<Hover link="#academic" text="Academic" />
+			</div>
+		</div>
 	</div>
 </Card>
