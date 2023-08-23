@@ -1,12 +1,16 @@
 ---
 import { getImage } from 'astro:assets'
 import Card from '../Card.astro'
+import BackgroundNoise from '../BackgroundNoise.astro'
+import BackgroundImage from '../BackgroundImage.astro'
 import locationBackground from '../../assets/images/austin.jpg'
 const optimizedBackground = await getImage({ src: locationBackground, width: 1000, height: 1000 })
 ---
 
-<Card backgroundImage={optimizedBackground.src} noisy="true">
-	<div class="flex justify-between items-center">
+<Card>
+	<BackgroundImage image={optimizedBackground.src} />
+	<BackgroundNoise />
+	<div class="relative flex justify-between items-center">
 		<p class="text-accent md:text-lg lg:text-sm">Current Location</p>
 		<h2 class="text-primary text-sm md:text-2xl">Austin</h2>
 	</div>
