@@ -92,12 +92,12 @@ import AcademicProjects from '../components/cards/AcademicProjects.astro'
 				<div id="experience" class="pt-4">
 					<Experience />
 				</div>
-				<div id="projects" class="flex flex-col md:flex-row gap-4">
+				<div id="projects" class="flex flex-col md:flex-row gap-x-4">
 					<div class="lg:w-[calc(66.666667%-1rem)] md:w-1/2 flex-col flex h-fit">
 						<div id="webdev" class="w-full h-full pt-4">
 							<WebdevProjects />
 						</div>
-						<div id="academic" class="w-full h-full pt-4">
+						<div id="academic" class="w-full h-full pt-4 hidden lg:block">
 							<AcademicProjects />
 						</div>
 					</div>
@@ -107,6 +107,9 @@ import AcademicProjects from '../components/cards/AcademicProjects.astro'
 						</div>
 						<div id="webflow" class="w-full h-full pt-4">
 							<WebflowProjects />
+						</div>
+						<div id="academic" class="w-full h-full pt-4 lg:hidden">
+							<AcademicProjects />
 						</div>
 					</div>
 				</div>
