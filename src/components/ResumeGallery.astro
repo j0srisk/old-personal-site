@@ -1,0 +1,22 @@
+---
+import { getCollection, getEntry } from 'astro:content'
+import Card from './Card.astro'
+import ProjectItem from './ProjectItem.astro'
+import ResumeItem from './ResumeItem.astro'
+
+const { category } = Astro.props
+
+const resumes = await getCollection('resumes', ({ id, data }) => {
+	return id.startsWith(category) && data.isDraft !== true
+})
+
+resumes.sort((a, b) => b.data.sortOrder - a.data.sortOrder)
+
+if (resumes.length === 0) {
+	throw new Error(`No resumes found for category ${category}`)
+}
+---
+
+<div class="flex flex-col gap-8 w-full">
+	{resumes.map((resume) => <ResumeItem {...resume.data} />)}
+</div>

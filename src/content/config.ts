@@ -24,4 +24,17 @@ const devicons = defineCollection({
 		})
 })
 
-export const collections = { projects, devicons }
+const resumes = defineCollection({
+	schema: ({ image }) =>
+		z.object({
+			name: z.string(),
+			date: z.string(),
+			icon: image(),
+			subtexts: z.array(z.string().optional()),
+			description: z.string().optional(),
+			isDraft: z.boolean().default(false),
+			sortOrder: z.number().optional()
+		})
+})
+
+export const collections = { projects, devicons, resumes }

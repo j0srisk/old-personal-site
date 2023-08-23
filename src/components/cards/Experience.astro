@@ -1,30 +1,12 @@
 ---
-import { filterProjects, sortProjects } from '../../utils/ProjectUtilites.js'
 import Card from '../Card.astro'
 import Header from '../Header.astro'
-import ResumeItem from '../ResumeItem.astro'
-
-let experiences = await Astro.glob('../../pages/experience/*.md')
-experiences = filterProjects(experiences)
-experiences = sortProjects(experiences)
+import ResumeGallery from '../ResumeGallery.astro'
 ---
 
 <Card>
 	<Header heading="Experience" />
 	<div class="flex flex-col gap-8 w-full">
-		{
-			experiences.map((experience) => (
-				<ResumeItem
-					icon={experience.frontmatter.icon}
-					title={experience.frontmatter.name}
-					date={experience.frontmatter.date}
-					description={experience.frontmatter.description}
-				>
-					{experience.frontmatter.subtexts.map((subtext) => (
-						<p class="text-accent ">{subtext}</p>
-					))}
-				</ResumeItem>
-			))
-		}
+		<ResumeGallery category="experience" />
 	</div>
 </Card>
