@@ -2,7 +2,7 @@
 import Card from '../Card.astro'
 import BackgroundNoise from '../BackgroundNoise.astro'
 import BackgroundColor from '../BackgroundColor.astro'
-const { backgroundColor, number, symbol, text } = Astro.props
+const { backgroundColor, number, symbol, line1, line2 } = Astro.props
 ---
 
 <Card>
@@ -13,6 +13,7 @@ const { backgroundColor, number, symbol, text } = Astro.props
 			<h2 class="text-primary text-2xl lg:text-5xl md:text-3xl">{number}</h2>
 			<h3 class="text-primary text-xs lg:text-base md:text-lg">{symbol}</h3>
 		</div>
-		<h3 class="text-primary text-xs lg:text-base md:text-lg">{text}</h3>
+		<h3 class="text-primary text-xs lg:text-base md:text-lg">{line1}</h3>
+		<h3 class="text-primary text-xs lg:text-base md:text-lg">{line2}</h3>
 	</div>
 </Card>

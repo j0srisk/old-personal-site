@@ -1,5 +1,5 @@
 ---
 name: Astro
-backgroundColor: '#803AEB'
+backgroundColor: '#4f46e5'
 icon: ../../assets/images/icons/astro.png
 ---
