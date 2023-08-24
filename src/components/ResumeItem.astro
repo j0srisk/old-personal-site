@@ -10,7 +10,7 @@ const { name, date, icon, subtexts, description } = Astro.props
 	<div class="bg-white bg-opacity-10 w-[1px] rounded-xl max-h-full"></div>
 	<div class="flex flex-col flex-1 items-start justify-start gap-2">
 		<div class="flex flex-col justify-between w-full">
-			<div class="flex flex-col justify-between w-full items-start lg:flex-row gap-2">
+			<div class="flex flex-col justify-between w-full items-start lg:flex-row">
 				<p class="text-primary text-lg md:text-xl text-left">{name}</p>
 				<p class="text-accent text-xs md:text-base lg:text-sm text-white text-right">{date}</p>
 			</div>
@@ -24,7 +24,7 @@ const { name, date, icon, subtexts, description } = Astro.props
 				))
 			}
 		</div>
-		<p class="text-accent text-xs md:text-sm">
+		<p class="text-accent text-xs md:text-sm lg:w-3/4">
 			{description}
 		</p>
 	</div>
