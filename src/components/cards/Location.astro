@@ -11,7 +11,8 @@ const optimizedBackground = await getImage({ src: locationBackground, width: 100
 	<BackgroundImage image={optimizedBackground.src} />
 	<BackgroundNoise />
 	<div class="relative flex justify-between items-center h-8">
-		<p class="text-accent text-xs md:text-base lg:text-sm">Current Location</p>
+		<p class="text-accent text-xs md:text-base lg:text-sm hidden lg:block">Current Location</p>
+		<p class="text-accent text-xs md:text-base lg:text-sm lg:hidden">Location</p>
 		<h2 class="text-primary text-sm md:text-2xl lg:text-xl">Austin</h2>
 	</div>
 </Card>
