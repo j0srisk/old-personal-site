@@ -1,6 +1,6 @@
 ---
 name: Happy Air HVAC
-description: Description Here
+description: 'A website for a local HVAC company built with Webflow. Features a blog, custom CMS, and Google Analytics integration.'
 cover: ../../../assets/images/projects/happy-air.png
 link: https://happyairhvac.com
 isDraft: false
