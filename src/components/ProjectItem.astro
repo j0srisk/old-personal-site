@@ -3,22 +3,26 @@ import { Image } from 'astro:assets'
 
 import Hover from './Hover.astro'
 import Devicon from './Devicon.astro'
+import BackgroundNoise from './BackgroundNoise.astro'
 
 const { cover, name, date, description, link, github, tools } = Astro.props
 ---
 
 <div class="flex w-full gap-4 flex-col">
-	<div
-		class="flex flex-col relative border border-white border-opacity-10 bg-white bg-opacity-10 rounded-md p-1 gap-1 shadow-md backdrop-blur-sm"
-	>
-		<div class="flex h-fit w-full gap-[3px]">
-			<div class="flex h-1 w-1 rounded-full bg-[#FF5F57]"></div>
-			<div class="flex h-1 w-1 rounded-full bg-[#FEBC2E]"></div>
-			<div class="flex h-1 w-1 rounded-full bg-[#29C740]"></div>
-		</div>
-		<div class="relative flex h-full aspect-video">
-			<Image src={cover} alt="icon" class="flex-1 h-full rounded-sm object-cover" width={1500} />
-			<Hover link={link} github={github} newTab="true" radius="sm" />
+	<div class="relative rounded-md bg-black bg-opacity-0">
+		<BackgroundNoise />
+		<div
+			class="flex flex-col relative border border-white border-opacity-10 bg-white bg-opacity-10 rounded-md p-1 gap-1 shadow-md backdrop-blur-sm"
+		>
+			<div class="flex h-fit w-full gap-[3px]">
+				<div class="flex h-1 w-1 rounded-full bg-[#FF5F57]"></div>
+				<div class="flex h-1 w-1 rounded-full bg-[#FEBC2E]"></div>
+				<div class="flex h-1 w-1 rounded-full bg-[#29C740]"></div>
+			</div>
+			<div class="relative flex h-full aspect-video">
+				<Image src={cover} alt="icon" class="flex-1 h-full rounded-sm object-cover" width={1500} />
+				<Hover link={link} github={github} newTab="true" radius="sm" />
+			</div>
 		</div>
 	</div>
 	<div class="bg-white bg-opacity-10 w-[1px] rounded-xl max-h-full hidden"></div>
