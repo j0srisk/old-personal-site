@@ -1,5 +1,5 @@
 ---
-const { link, github, text, newTab } = Astro.props
+const { link, github, text, newTab, radius } = Astro.props
 
 import { Image } from 'astro:assets'
 import linkSVG from '../assets/images/icons/link.svg'
@@ -9,11 +9,18 @@ let target = '_self'
 if (newTab == 'true') {
 	target = '_blank'
 }
+
+let radiusClass = 'rounded-lg'
+if (radius) {
+	radiusClass = `rounded-${radius}`
+}
 ---
 
 {
 	link ? (
-		<div class="absolute w-full h-full flex items-center justify-center rounded-lg bg-black bg-opacity-70 opacity-0 hover:opacity-100 transition-all duration-500 ease-in-out gap-8">
+		<div
+			class={`absolute w-full h-full flex items-center justify-center  bg-black bg-opacity-70 opacity-0 hover:opacity-100 transition-all duration-500 ease-in-out gap-8 ${radiusClass}`}
+		>
 			{text ? (
 				<a
 					href={link}
