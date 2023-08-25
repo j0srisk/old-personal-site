@@ -19,12 +19,12 @@ const { name, date, icon, subtexts, description } = Astro.props
 			{
 				subtexts.map((subtext) => (
 					<>
-						<p class="text-accent text-xs md:text-sm">{subtext}</p>
+						<p class="text-accent text-xs ">{subtext}</p>
 					</>
 				))
 			}
 		</div>
-		<p class="text-accent text-xs md:text-sm lg:w-3/4">
+		<p class="text-accent text-xs lg:w-3/4">
 			{description}
 		</p>
 	</div>
